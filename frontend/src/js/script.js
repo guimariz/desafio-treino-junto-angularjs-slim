@@ -94,8 +94,7 @@ app.controller('crudController', function ($scope, $http) {
   $scope.fetchSingleData = function (id) {
     $http({
       method: 'POST',
-      url: 'fetch_data.php',
-      data: { id: id, action: 'fetch_single_data' },
+      url: 'http://localhost:8001/clients',
     }).success(function (data) {
       let edit = data.find((edit) => edit.id === id);
       $scope.client_name = edit.name;
@@ -109,7 +108,7 @@ app.controller('crudController', function ($scope, $http) {
     });
     $http({
       method: 'POST',
-      url: 'insert.php',
+      url: 'http://localhost:8001/clients',
       data: { id: id, action: 'fetch_single_data' },
     }).success(function () {
       $scope.modalTitle = 'Edit Data';
@@ -123,7 +122,7 @@ app.controller('crudController', function ($scope, $http) {
     if (confirm('Deseja remover o cliente?')) {
       $http({
         method: 'POST',
-        url: 'insert.php',
+        url: 'http://localhost:8001/clients',
         data: { id: id, action: 'Delete' },
       }).success(function (data) {
         $scope.success = true;
