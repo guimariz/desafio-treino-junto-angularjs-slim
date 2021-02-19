@@ -7,14 +7,7 @@ $app = new \Slim\App(slimConfiguration());
 
 // ========================================
 
-$app->add(new Tuupola\Middleware\CorsMiddleware([
-  "origin" => ["http://localhost:8001/"],
-  "methods" => ["GET", "POST", "PUT", "DELETE", "OPTIONS"],    
-  "headers.allow" => ["Origin", "Content-Type", "Authorization", "Accept", "ignoreLoadingBar", "X-Requested-With", "Access-Control-Allow-Origin"],
-  "headers.expose" => [],
-  "credentials" => true,
-  "cache" => 0,        
-]));
+$app->add(new Tuupola\Middleware\CorsMiddleware);
 
 $app->get('/clients', ClientsController::class . ':getClients');
 $app->post('/clients', ClientsController::class . ':insertClient');
